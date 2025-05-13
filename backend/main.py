@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 import requests
 
 app = FastAPI()
@@ -13,7 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-NEWS_API_KEY = "29301ef09e5c426a96143b785681a53b"
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 @app.get("/news")
 def get_mafia_news():
